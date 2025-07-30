@@ -101,6 +101,8 @@ function renderCourses() {
     });
 }
 
+
+
 // Create a course button
 function createCourseButton(course) {
     const button = document.createElement('button');
@@ -256,9 +258,21 @@ function updateAllowedCourses() {
     const allowedCoursesList = document.getElementById('allowed-courses-list');
     allowedCoursesList.innerHTML = '';
 
-    const allowedCourses = coursesData.filter(course => 
-        !completedCourses.has(course.id) && isCourseAllowed(course)
-    );
+    // احسب عدد المواد الاختيارية المحددة
+    const optionalSelectedCount = [...completedCourses].filter(id => {
+        const c = coursesData.find(x => x.id === id);
+        return c && c.name.includes('إختيارية');
+    }).length;
+
+    const allowedCourses = coursesData.filter(course => {
+        if (completedCourses.has(course.id)) return false;
+        if (!isCourseAllowed(course)) return false;
+
+        // إذا كانت المادة اختيارية وتم اختيار 2، لا تظهرها في القائمة
+        if (course.name.includes('إختيارية') && optionalSelectedCount >= 2) return false;
+
+        return true;
+    });
 
     if (allowedCourses.length === 0) {
         allowedCoursesList.innerHTML = '<p style="text-align: center; color: #666;">لا توجد مواد متاحة حالياً</p>';
@@ -272,6 +286,7 @@ function updateAllowedCourses() {
         allowedCoursesList.appendChild(courseElement);
     });
 }
+
 
 // Show notification
 function showNotification(message, type = 'info') {

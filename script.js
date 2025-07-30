@@ -61,7 +61,7 @@ const coursesData = [
    
 
     { id: 'research-methods', name: 'مناهج البحث والتدريب الميداني', credits: 2, prerequisites: [], semester: 4, requiresCredits: 115 },
-    { id: 'graduation-project', name: 'مشروع التخرج', credits: 4, prerequisites: [], semester: 4, requiresCredits: 115 }
+    { id: 'graduation-project', name: 'مشروع التخرج', credits: 4, prerequisites: [], semester: 4, requiresCredits: 130 }
 ];
 
 // State management

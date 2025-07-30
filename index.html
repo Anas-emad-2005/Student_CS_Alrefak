@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تتبع المقررات الدراسية</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>تتبع المقررات الدراسية</h1>
+        <p>مرحباً بك في نظام تتبع الوحدات الدراسية الخاص بـجامعة الرفاق ( قسم علوم الحاسوب ).</p>
+        <p>قم بمعرفة المواد المسموح لك دراستها طبقاً لشجرة المواد، بطريقة بسيطة وسريعة.</p>
+    </header>
+
+
+
+  
+
+
+    <main>
+        <section class="instructions">
+            <h2>قم بالضغط على المواد التي اجتزتها بنجاح</h2>
+        </section>
+
+        <section class="courses-grid" id="courses-grid">
+            <!-- Course buttons will be dynamically loaded here by JavaScript -->
+        </section>
+
+        <section class="summary">
+            <div class="summary-item">
+                <h3>عدد المواد الكلي:</h3>
+                <p id="total-courses">0</p>
+            </div>
+            <div class="summary-item">
+                <h3>عدد المواد التي تم اجتيازها بنجاح:</h3>
+                <p id="completed-courses">0</p>
+            </div>
+            <div class="summary-item">
+                <h3>عدد المواد الباقي:</h3>
+                <p id="remaining-courses">0</p>
+            </div>
+          
+        </section>
+
+        
+        <section class="summary">
+            <div class="summary-item">
+                <h3>عدد الوحدات الكلي:</h3>
+                <p id="total-courses">142</p>
+            </div>
+             <div class="summary-item">
+                <h3>عدد الوحدات المنجزة:</h3>
+                <p id="earned-credits">0</p>
+            </div>
+            <div class="summary-item">
+                <h3>عدد الوحدات المتبقية:</h3>
+                <p id="remaining-credits">0</p>
+            </div>
+        
+        </section>
+
+        <section class="allowed-courses">
+            <h2>المواد المسموح بتنزيلها طبقاً لشجرة المواد</h2>
+            <div id="allowed-courses-list">
+                <!-- Allowed courses will be dynamically loaded here by JavaScript -->
+            </div>
+        </section>
+
+        <section class="notes">
+            <h2>ملاحظة</h2>
+            <p>المواد التي يلزم لتنزيلها بعد إتمام 115 وحدة:</p>
+            <ul>
+            
+                <li>مناهد البحث والتدريب الميداني</li>
+                <li>مشروع التخرج</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 أنس عماد عبد الله الخضار. جميع الحقوق محفوظة.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

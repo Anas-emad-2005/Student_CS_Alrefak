@@ -127,15 +127,23 @@ function createCourseButton(course) {
 }
 
 // Toggle course completion status
-
 function toggleCourse(courseId) {
     const course = coursesData.find(c => c.id === courseId);
     if (!course) return;
 
-    // Check if course is allowed to be taken
-    if (!completedCourses.has(courseId) && !isCourseAllowed(course)) {
-        showNotification('هذه المادة غير متاحة حالياً. يجب إكمال المتطلبات السابقة أولاً.', 'error');
-        return;
+    const isOptional = course.name.includes('إختيارية');
+
+    // لو المادة اختيارية ونبي نضيفها، نتحقق من عدد المواد الاختيارية المحددة
+    if (isOptional && !completedCourses.has(courseId)) {
+        const optionalCount = [...completedCourses].filter(id => {
+            const c = coursesData.find(x => x.id === id);
+            return c && c.name.includes('إختيارية');
+        }).length;
+
+        if (optionalCount >= 2) {
+            showNotification('لا يمكنك اختيار أكثر من مادتين اختياريتين', 'error');
+            return;
+        }
     }
 
     // Toggle completion status
@@ -155,6 +163,7 @@ function toggleCourse(courseId) {
     updateSummary();
     updateAllowedCourses();
 }
+
 
 // Check if a course is allowed to be taken
 function isCourseAllowed(course) {

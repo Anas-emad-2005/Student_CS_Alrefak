@@ -133,7 +133,7 @@ function toggleCourse(courseId) {
 
     const isOptional = course.name.includes('إختيارية');
 
-    // لو المادة اختيارية ونبي نضيفها، نتحقق من عدد المواد الاختيارية المحددة
+    // تحقق من عدد المواد الاختيارية
     if (isOptional && !completedCourses.has(courseId)) {
         const optionalCount = [...completedCourses].filter(id => {
             const c = coursesData.find(x => x.id === id);
@@ -146,19 +146,27 @@ function toggleCourse(courseId) {
         }
     }
 
-    // Toggle completion status
+    // لو المادة محددة ونبي نشيلها
     if (completedCourses.has(courseId)) {
         completedCourses.delete(courseId);
+
+        // نحذف أي مادة تعتمد عليها
+        coursesData.forEach(c => {
+            if (c.prerequisites.includes(courseId) && completedCourses.has(c.id)) {
+                completedCourses.delete(c.id);
+                showNotification(`تم إلغاء ${c.name} لأنها تعتمد على ${course.name}`, 'info');
+            }
+        });
+
         showNotification(`تم إلغاء تحديد مادة: ${course.name}`, 'info');
     } else {
+        // نضيف المادة
         completedCourses.add(courseId);
         showNotification(`تم تحديد مادة: ${course.name} كمكتملة`, 'success');
     }
 
-    // Save to localStorage
+    // حفظ وتحديث
     saveCompletedCourses();
-
-    // Update UI
     renderCourses();
     updateSummary();
     updateAllowedCourses();
@@ -205,19 +213,30 @@ function updateSummary() {
 
     const totalCourses = coursesData.length;
     const completedCount = completedCourses.size;
-    const remainingCount = totalCourses - completedCount;
 
+    const totalUnits = 142;
+    const completedUnits = calculateTotalCredits();
+    const remainingUnits = completedUnits >= totalUnits ? 0 : totalUnits - completedUnits;
+
+    // لو عدد المواد 40 أو أكثر نرجع الباقي 0
+    const remainingCoursesCount = completedCount >= 40 ? 0 : totalCourses - completedCount;
+
+    // تحديث القيم على الشاشة
     totalCoursesElement.textContent = totalCourses;
     completedCoursesElement.textContent = completedCount;
-    remainingCoursesElement.textContent = remainingCount;
+    remainingCoursesElement.textContent = remainingCoursesCount;
 
-    // Add animation effect
+    document.getElementById('earned-credits').textContent = completedUnits;
+    document.getElementById('remaining-credits').textContent = remainingUnits;
+
+    // Animation effect
     [totalCoursesElement, completedCoursesElement, remainingCoursesElement].forEach(el => {
         el.style.transform = 'scale(1.1)';
         setTimeout(() => {
             el.style.transform = 'scale(1)';
         }, 200);
     });
+}
     const totalUnits = 142;
 const completedUnits = calculateTotalCredits();
 const remainingUnits = totalUnits - completedUnits;
@@ -225,7 +244,7 @@ const remainingUnits = totalUnits - completedUnits;
 // نعرض القيم في الصفحة
 document.getElementById('earned-credits').textContent = completedUnits;
 document.getElementById('remaining-credits').textContent = remainingUnits;
-}
+
 
 // Update allowed courses list
 function updateAllowedCourses() {

@@ -7,7 +7,7 @@ const coursesData = [
     { id: 'english-1', name: 'اللغة الانجليزية 1', credits: 2, prerequisites: [], semester: 1 },
     { id: 'math-1', name: 'رياضة 1', credits: 3, prerequisites: [], semester: 1 },
     { id: 'computer-basics', name: 'مقدمة في علوم الحاسوب', credits: 3, prerequisites: [], semester: 1 },
-    { id: 'electrical-engineering', name: 'مبادئ هندسة كهربائية', credits: 3, prerequisites: [], semester: 1 },
+    { id: 'electrical-engineering', name: 'مبادئ هندسة كهربائية', credits: 4, prerequisites: [], semester: 1 },
     { id: 'programming-basics', name: 'اساسيات برمجة', credits: 4, prerequisites: [], semester: 1 },
 
 

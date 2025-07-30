@@ -211,17 +211,22 @@ function updateSummary() {
     const completedCoursesElement = document.getElementById('completed-courses');
     const remainingCoursesElement = document.getElementById('remaining-courses');
 
-    const totalCourses = coursesData.length;
+    const totalCourses = 40;
     const completedCount = completedCourses.size;
-
-    const totalUnits = 142;
-    const completedUnits = calculateTotalCredits();
-    const remainingUnits = completedUnits >= totalUnits ? 0 : totalUnits - completedUnits;
-
-    // لو عدد المواد 40 أو أكثر نرجع الباقي 0
     const remainingCoursesCount = completedCount >= 40 ? 0 : totalCourses - completedCount;
 
-    // تحديث القيم على الشاشة
+    const totalUnits = 142;
+    let completedUnits = calculateTotalCredits();
+    let remainingUnits = 0;
+
+    // لو الطالب كمل 40 مادة، اعتبره كمل 142 وحدة
+    if (completedCount >= 40) {
+        completedUnits = 142;
+        remainingUnits = 0;
+    } else {
+        remainingUnits = totalUnits - completedUnits;
+    }
+
     totalCoursesElement.textContent = totalCourses;
     completedCoursesElement.textContent = completedCount;
     remainingCoursesElement.textContent = remainingCoursesCount;

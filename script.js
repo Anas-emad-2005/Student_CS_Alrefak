@@ -53,7 +53,7 @@ const coursesData = [
     
   
     { id: 'systems-programming', name: 'برمجة نظم', credits: 4, prerequisites: ['computer-architecture'], semester: 3},
-    { id: 'computer-graphics', name: 'الرسم بالحاسوب', credits: 4, prerequisites: ['linear-algebra'], semester: 4 },
+    { id: 'computer-graphics', name: 'الرسم بالحاسوب', credits: 4, prerequisites: ['modeling-simulation'], semester: 4 },
     { id: 'selected-topics-2', name: ' (إختيارية)معالجة الصور', credits: 4, prerequisites: ['modeling-simulation'], semester: 4 },
     { id: 'Information security', name: '(إختيارية) أمن المعلومات', credits: 4, prerequisites: ['computer-networks'], semester: 3 },
     { id: 'Network building and design', name: '(إختيارية) بناء وتصميم الشبكات', credits: 4, prerequisites: ['computer-networks'], semester: 3 },

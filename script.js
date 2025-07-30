@@ -45,7 +45,7 @@ const coursesData = [
     { id: 'computer-architecture', name: 'معمارية الحاسوب', credits: 4, prerequisites: ['assembly-language'], semester: 3 }, 
 
     { id: 'web-design', name: 'تصميم مواقع انترنت', credits: 4, prerequisites: ['java-language'], semester: 4 },
-    { id: 'modeling-simulation', name: 'النمذجة والمحاكاة', credits: 4, prerequisites: ['statistics'], semester: 3 },
+    { id: 'modeling-simulation', name: 'النمذجة والمحاكاة', credits: 4, prerequisites: ['visual-programming-2'], semester: 3 },
     { id: 'artificial-intelligence', name: 'ذكاء اصطناعي', credits: 4, prerequisites: ['data-structures-2'], semester: 4 },
     { id: 'Mobile applications', name: '(إختيارية)تطبيقات موبايل', credits: 4, prerequisites: ['java-language'], semester: 4 },
    

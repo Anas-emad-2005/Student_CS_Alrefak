@@ -7,60 +7,60 @@ const coursesData = [
     { id: 'english-1', name: 'اللغة الانجليزية 1', credits: 2, prerequisites: [], semester: 1 },
     { id: 'math-1', name: 'رياضة 1', credits: 3, prerequisites: [], semester: 1 },
     { id: 'computer-basics', name: 'مقدمة في علوم الحاسوب', credits: 3, prerequisites: [], semester: 1 },
-    { id: 'electrical-engineering', name: 'مبادئ هندسة كهربائية', credits: 4, prerequisites: [], semester: 1 },
+    { id: 'electrical-engineering', name: 'مبادئ هندسة كهربائية', credits: 3, prerequisites: [], semester: 1 },
     { id: 'programming-basics', name: 'اساسيات برمجة', credits: 4, prerequisites: [], semester: 1 },
 
 
-    { id: 'english-2', name: 'لغة انجليزية 2', credits: 2, prerequisites: ['english-1'], semester: 1 },
-    { id: 'math-2', name: 'رياضة 2', credits: 3, prerequisites: ['math-1'], semester: 1 },
-    { id: 'statistics', name: 'إحصاء واحتمالات', credits: 3, prerequisites: ['math-1'], semester: 1 },
-    { id: 'digital-systems', name: 'مقدمة أنظمة رقمية', credits: 4, prerequisites: ['electrical-engineering', 'computer-basics'], semester: 1 },
+    { id: 'english-2', name: 'لغة انجليزية 2', credits: 2, prerequisites: ['english-1'], semester: 2 },
+    { id: 'math-2', name: 'رياضة 2', credits: 3, prerequisites: ['math-1'], semester: 2 },
+    { id: 'statistics', name: 'إحصاء واحتمالات', credits: 3, prerequisites: ['math-1'], semester: 2 },
+    { id: 'digital-systems', name: 'مقدمة أنظمة رقمية', credits: 4, prerequisites: ['electrical-engineering', 'computer-basics'], semester: 2 },
    
-    { id: 'systems-analysis', name: 'تحليل نظم', credits: 4, prerequisites: ['programming-basics'], semester: 1 },
+    { id: 'systems-analysis', name: 'تحليل نظم', credits: 4, prerequisites: ['programming-basics' , 'c-language'], semester: 3 },
     { id: 'c-language', name: 'لغة C', credits: 4, prerequisites: ['programming-basics'], semester: 2 },
 
 
-   { id: 'visual-programming-1', name: 'برمجة مرئية1 ', credits: 4, prerequisites: ['c-language'], semester: 2 },
+   { id: 'visual-programming-1', name: 'برمجة مرئية1 ', credits: 4, prerequisites: ['c-language'], semester: 3 },
    { id: 'cpp-programming', name: 'البرمجة الشيئية  ', credits: 4, prerequisites: ['c-language'], semester: 3 },
-   { id: 'data-structures-1', name: 'تراكيب بيانات 1', credits: 4, prerequisites: ['c-language'], semester: 2 },
-   { id: 'database-management', name: 'إدارة قواعد بيانات', credits: 4, prerequisites: ['systems-analysis'], semester: 2 },
-   { id: 'software-engineering', name: 'هندسة برمجيات', credits: 4, prerequisites: ['systems-analysis'], semester: 2 },
-   { id: 'numerical-methods', name: 'طرق عددية', credits: 4, prerequisites: ['math-2'], semester: 2 },
-   { id: 'discrete-structures', name: 'تراكيب منفصلة', credits: 3, prerequisites: ['math-2'], semester: 2 },
-   { id: 'linear-algebra', name: 'جبر خطي والمنطق', credits: 3, prerequisites: ['math-2'], semester: 2 },
-   { id: 'computer-organization', name: 'تنظيم حاسبات', credits: 4, prerequisites: ['digital-systems'], semester: 2 },
+   { id: 'data-structures-1', name: 'تراكيب بيانات 1', credits: 4, prerequisites: ['c-language'], semester: 3 },
+   { id: 'database-management', name: 'إدارة قواعد بيانات', credits: 4, prerequisites: ['systems-analysis','discrete-structures'], semester: 4 },
+   { id: 'software-engineering', name: 'هندسة برمجيات', credits: 4, prerequisites: ['systems-analysis'], semester: 4 },
+   { id: 'numerical-methods', name: 'طرق عددية', credits: 4, prerequisites: ['math-2','c-language'], semester: 4 },
+   { id: 'discrete-structures', name: 'تراكيب منفصلة', credits: 3, prerequisites: ['math-2'], semester: 3 },
+   { id: 'linear-algebra', name: 'جبر خطي والمنطق', credits: 3, prerequisites: ['math-2'], semester: 3 },
+   { id: 'computer-organization', name: 'تنظيم حاسبات', credits: 4, prerequisites: ['digital-systems'], semester: 3 },
    
 
 
     
-    { id: 'operating-systems', name: 'نظم تشغيل', credits: 4, prerequisites: ['software-engineering'], semester: 2 },
+    { id: 'operating-systems', name: 'نظم تشغيل', credits: 4, prerequisites: ['software-engineering','data-structures-1'], semester: 2 },
     { id: 'delphi', name: 'لغة دلفي', credits: 4, prerequisites: ['database-management'], semester: 3 },
-    { id: 'visual-programming-2', name: 'برمجة مرئية2 ', credits: 4, prerequisites: ['visual-programming-1'], semester: 2},
-    { id: 'data-structures-2', name: 'تراكيب بيانات 2', credits: 4, prerequisites: ['data-structures-1'], semester: 3 },
+    { id: 'visual-programming-2', name: 'برمجة مرئية2 ', credits: 4, prerequisites: ['visual-programming-1'], semester: 5},
+    { id: 'data-structures-2', name: 'تراكيب بيانات 2', credits: 4, prerequisites: ['data-structures-1','cpp-programming'], semester: 5 },
     { id: 'java-language', name: 'لغة جافا', credits: 4, prerequisites: ['cpp-programming'], semester: 3 },
     
 
-    { id: 'assembly-language', name: 'لغة تجميع ASSEMBLY', credits: 4, prerequisites: ['computer-organization'], semester: 2 },
-    { id: 'computer-networks', name: 'شبكات حاسوب', credits: 4, prerequisites: ['assembly-language'], semester: 3 },
-    { id: 'computer-architecture', name: 'معمارية الحاسوب', credits: 4, prerequisites: ['assembly-language'], semester: 3 }, 
+    { id: 'assembly-language', name: 'لغة تجميع ASSEMBLY', credits: 4, prerequisites: ['computer-organization'], semester: 4 },
+    { id: 'computer-networks', name: 'شبكات حاسوب', credits: 4, prerequisites: ['assembly-language'], semester: 5 },
+    { id: 'computer-architecture', name: 'معمارية الحاسوب', credits: 4, prerequisites: ['assembly-language'], semester: 5 }, 
 
-    { id: 'web-design', name: 'تصميم مواقع انترنت', credits: 3, prerequisites: ['java-language'], semester: 4 },
-    { id: 'modeling-simulation', name: 'النمذجة والمحاكاة', credits: 4, prerequisites: ['visual-programming-2'], semester: 3 },
-    { id: 'artificial-intelligence', name: 'ذكاء اصطناعي', credits: 4, prerequisites: ['data-structures-2'], semester: 4 },
-    { id: 'Mobile applications', name: '(إختيارية)تطبيقات موبايل', credits: 4, prerequisites: ['java-language'], semester: 4 },
+    { id: 'web-design', name: 'تصميم مواقع انترنت', credits: 3, prerequisites: ['java-language','visual-programming-2'], semester: 7 },
+    { id: 'modeling-simulation', name: 'النمذجة والمحاكاة', credits: 4, prerequisites: ['visual-programming-2'], semester: 6 },
+    { id: 'artificial-intelligence', name: 'ذكاء اصطناعي', credits: 4, prerequisites: ['data-structures-2'], semester: 7 },
+    { id: 'Mobile applications', name: '(إختيارية)تطبيقات موبايل', credits: 4, prerequisites: ['java-language'], semester: 5 },
    
     
     
   
-    { id: 'systems-programming', name: 'برمجة نظم', credits: 4, prerequisites: ['computer-architecture'], semester: 3},
-    { id: 'computer-graphics', name: 'الرسم بالحاسوب', credits: 4, prerequisites: ['modeling-simulation'], semester: 4 },
-    { id: 'selected-topics-2', name: ' (إختيارية)معالجة الصور', credits: 4, prerequisites: ['modeling-simulation'], semester: 4 },
-    { id: 'Information security', name: '(إختيارية) أمن المعلومات', credits: 4, prerequisites: ['computer-networks'], semester: 3 },
-    { id: 'Network building and design', name: '(إختيارية) بناء وتصميم الشبكات', credits: 4, prerequisites: ['computer-networks'], semester: 3 },
+    { id: 'systems-programming', name: 'برمجة نظم', credits: 4, prerequisites: ['computer-architecture'], semester: 6},
+    { id: 'computer-graphics', name: 'الرسم بالحاسوب', credits: 4, prerequisites: ['modeling-simulation'], semester: 7 },
+    { id: 'selected-topics-2', name: ' (إختيارية)معالجة الصور', credits: 4, prerequisites: ['modeling-simulation'], semester: 7 },
+    { id: 'Information security', name: '(إختيارية) أمن المعلومات', credits: 4, prerequisites: ['computer-networks'], semester: 6 },
+    { id: 'Network building and design', name: '(إختيارية) بناء وتصميم الشبكات', credits: 4, prerequisites: ['computer-networks'], semester: 6 },
     
    
 
-    { id: 'research-methods', name: 'مناهج البحث والتدريب الميداني', credits: 2, prerequisites: [], semester: 4, requiresCredits: 115 },
+    { id: 'research-methods', name: 'مناهج البحث والتدريب الميداني', credits: 2, prerequisites: [], semester: 4, requiresCredits: 130 },
     { id: 'graduation-project', name: 'مشروع التخرج', credits: 4, prerequisites: [], semester: 4, requiresCredits: 130 }
 ];
 
@@ -217,13 +217,13 @@ function updateSummary() {
     const completedCount = completedCourses.size;
     const remainingCoursesCount = completedCount >= 40 ? 0 : totalCourses - completedCount;
 
-    const totalUnits = 142;
+    const totalUnits = 140;
     let completedUnits = calculateTotalCredits();
     let remainingUnits = 0;
 
-    // لو الطالب كمل 40 مادة، اعتبره كمل 142 وحدة
+    // لو الطالب كمل 40 مادة، اعتبره كمل 140 وحدة
     if (completedCount >= 40) {
-        completedUnits = 142;
+        completedUnits = 140;
         remainingUnits = 0;
     } else {
         remainingUnits = totalUnits - completedUnits;
@@ -437,7 +437,7 @@ function initializeTooltips() {
         const course = coursesData.find(c => c.id === courseId);
         
         if (course) {
-            button.title = `المادة: ${course.name}\nالوحدات: ${course.credits}\nالسنة: ${course.semester}`;
+            button.title = `المادة: ${course.name}\nالوحدات: ${course.credits}\nالفصل الدراسي ${course.semester}`;
             
             if (course.prerequisites.length > 0) {
                 const prereqNames = course.prerequisites.map(id => {
@@ -475,6 +475,3 @@ document.getElementById('course-tree-modal').addEventListener('click', function 
         document.getElementById('course-tree-modal').style.display = 'none';
     }
 });
-
-
-

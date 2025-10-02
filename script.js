@@ -23,10 +23,11 @@ const coursesData = [
    { id: 'visual-programming-1', name: 'برمجة مرئية1 ', credits: 4, prerequisites: ['c-language'], semester: 3 },
    { id: 'cpp-programming', name: 'البرمجة الشيئية  ', credits: 4, prerequisites: ['c-language'], semester: 3 },
    { id: 'data-structures-1', name: 'تراكيب بيانات 1', credits: 4, prerequisites: ['c-language'], semester: 3 },
-   { id: 'database-management', name: 'إدارة قواعد بيانات', credits: 4, prerequisites: ['systems-analysis','discrete-structures'], semester: 4 },
+  
    { id: 'software-engineering', name: 'هندسة برمجيات', credits: 4, prerequisites: ['systems-analysis'], semester: 4 },
    { id: 'numerical-methods', name: 'طرق عددية', credits: 4, prerequisites: ['math-2','c-language'], semester: 4 },
    { id: 'discrete-structures', name: 'تراكيب منفصلة', credits: 3, prerequisites: ['math-2'], semester: 3 },
+    { id: 'database-management', name: 'إدارة قواعد بيانات', credits: 4, prerequisites: ['systems-analysis','discrete-structures'], semester: 4 },
    { id: 'linear-algebra', name: 'جبر خطي والمنطق', credits: 3, prerequisites: ['math-2'], semester: 3 },
    { id: 'computer-organization', name: 'تنظيم حاسبات', credits: 4, prerequisites: ['digital-systems'], semester: 3 },
    

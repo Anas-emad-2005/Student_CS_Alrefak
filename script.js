@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateSummary();
     updateAllowedCourses();
 });
-
+/*
 // Load completed courses from localStorage
 function loadCompletedCourses() {
     const saved = localStorage.getItem('completedCourses');
@@ -84,11 +84,19 @@ function loadCompletedCourses() {
         completedCourses = new Set();
     }
 }
+*/
+function loadCompletedCourses() {
+    const saved = localStorage.getItem('completedCourses'); // نجيب البيانات من localStorage
+    if (saved) {
+        completedCourses = new Set(JSON.parse(saved)); // نحول النص لمجموعة ونخزنها
+    }
+}
 
 // Save completed courses to localStorage
 
 function saveCompletedCourses() {
-   // localStorage.setItem('completedCourses', JSON.stringify([...completedCourses]));
+   localStorage.setItem('completedCourses', JSON.stringify([...completedCourses]));
+   //اهيا تخزن اي تقدم للطالب مش لازم يعاود في كل مرة
 }
 
 // Render all courses
@@ -129,7 +137,63 @@ function createCourseButton(course) {
     return button;
 }
 
+function toggleCourse(courseId) {
+    const course = coursesData.find(c => c.id === courseId);
+    if (!course) return;
+
+    const isOptional = course.name.includes('إختيارية');
+
+    // تحقق من عدد المواد الاختيارية
+    if (isOptional && !completedCourses.has(courseId)) {
+        const optionalCount = [...completedCourses].filter(id => {
+            const c = coursesData.find(x => x.id === id);
+            return c && c.name.includes('إختيارية');
+        }).length;
+
+        if (optionalCount >= 2) {
+            showNotification('لا يمكنك اختيار أكثر من مادتين اختياريتين', 'error');
+            return;
+        }
+    }
+
+    if (completedCourses.has(courseId)) {
+        // شيل المادة
+        completedCourses.delete(courseId);
+        showNotification(`تم إلغاء تحديد مادة: ${course.name}`, 'info');
+
+        // شيل كل المواد التابعة لها
+        removeDependents(courseId);
+    } else {
+        // أضف المادة
+        completedCourses.add(courseId);
+        showNotification(`تم تحديد مادة: ${course.name} كمكتملة`, 'success');
+    }
+
+    // حفظ وتحديث
+    saveCompletedCourses();
+    renderCourses();
+    updateSummary();
+    updateAllowedCourses();
+}
+
+// دالة recursive للحذف
+function removeDependents(courseId) {
+    coursesData.forEach(c => {
+        if (c.prerequisites.includes(courseId) && completedCourses.has(c.id)) {
+            completedCourses.delete(c.id);
+            showNotification(`تم إلغاء ${c.name} لأنها تعتمد على ${getCourseName(courseId)}`, 'info');
+            removeDependents(c.id); // استدعاء recursive
+        }
+    });
+}
+
+function getCourseName(courseId) {
+    const c = coursesData.find(x => x.id === courseId);
+    return c ? c.name : courseId;
+}
+
 // Toggle course completion status
+/*
 function toggleCourse(courseId) {
     const course = coursesData.find(c => c.id === courseId);
     if (!course) return;
@@ -174,6 +238,7 @@ function toggleCourse(courseId) {
     updateSummary();
     updateAllowedCourses();
 }
+    */
 
 
 // Check if a course is allowed to be taken

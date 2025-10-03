@@ -20,7 +20,7 @@ const coursesData = [
     { id: 'c-language', name: 'لغة C', credits: 4, prerequisites: ['programming-basics'], semester: 2 },
 
 
-   { id: 'visual-programming-1', name: 'برمجة مرئية1 ', credits: 4, prerequisites: ['c-language'], semester: 3 },
+   { id: 'visual-programming-1', name: 'برمجة مرئية 1 ', credits: 4, prerequisites: ['c-language'], semester: 3 },
    { id: 'cpp-programming', name: 'البرمجة الشيئية  ', credits: 4, prerequisites: ['c-language'], semester: 3 },
    { id: 'data-structures-1', name: 'تراكيب بيانات 1', credits: 4, prerequisites: ['c-language'], semester: 3 },
   
@@ -36,7 +36,7 @@ const coursesData = [
     
     { id: 'operating-systems', name: 'نظم تشغيل', credits: 4, prerequisites: ['software-engineering','data-structures-1'], semester: 2 },
     { id: 'delphi', name: 'لغة دلفي', credits: 4, prerequisites: ['database-management'], semester: 3 },
-    { id: 'visual-programming-2', name: 'برمجة مرئية2 ', credits: 4, prerequisites: ['visual-programming-1'], semester: 5},
+    { id: 'visual-programming-2', name: 'برمجة مرئية 2', credits: 4, prerequisites: ['visual-programming-1' , 'database-management'], semester: 5},
     { id: 'data-structures-2', name: 'تراكيب بيانات 2', credits: 4, prerequisites: ['data-structures-1','cpp-programming'], semester: 5 },
     { id: 'java-language', name: 'لغة جافا', credits: 4, prerequisites: ['cpp-programming'], semester: 3 },
     

@@ -7,22 +7,22 @@ const coursesData = [
     { id: 'english-1', name: 'اللغة الانجليزية 1', credits: 2, prerequisites: [], semester: 1 },
     { id: 'math-1', name: 'رياضة 1', credits: 3, prerequisites: [], semester: 1 },
     { id: 'computer-basics', name: 'مقدمة في علوم الحاسوب', credits: 3, prerequisites: [], semester: 1 },
-    { id: 'electrical-engineering', name: 'مبادئ هندسة كهربائية', credits: 3, prerequisites: [], semester: 1 },
+    { id: 'electrical-engineering', name: 'مبادئ هندسة كهربائية', credits: 4, prerequisites: [], semester: 1 },
     { id: 'programming-basics', name: 'اساسيات برمجة', credits: 4, prerequisites: [], semester: 1 },
 
 
     { id: 'english-2', name: 'لغة انجليزية 2', credits: 2, prerequisites: ['english-1'], semester: 2 },
     { id: 'math-2', name: 'رياضة 2', credits: 3, prerequisites: ['math-1'], semester: 2 },
-    { id: 'statistics', name: 'إحصاء واحتمالات', credits: 3, prerequisites: ['math-1'], semester: 2 },
+    { id: 'statistics', name: 'إحصاء واحتمالات', credits: 4, prerequisites: ['math-1'], semester: 2 },
     { id: 'digital-systems', name: 'مقدمة أنظمة رقمية', credits: 4, prerequisites: ['electrical-engineering', 'computer-basics'], semester: 2 },
    
     { id: 'systems-analysis', name: 'تحليل نظم', credits: 4, prerequisites: ['programming-basics' , 'c-language'], semester: 3 },
     { id: 'c-language', name: 'لغة C', credits: 4, prerequisites: ['programming-basics'], semester: 2 },
 
 
-   { id: 'visual-programming-1', name: 'برمجة مرئية 1 ', credits: 4, prerequisites: ['c-language'], semester: 3 },
+   { id: 'visual-programming-1', name: 'برمجة مرئية 1 ', credits: 4, prerequisites: ['c-language'], semester: 4 },
    { id: 'cpp-programming', name: 'البرمجة الشيئية  ', credits: 4, prerequisites: ['c-language'], semester: 3 },
-   { id: 'data-structures-1', name: 'تراكيب بيانات 1', credits: 4, prerequisites: ['c-language'], semester: 3 },
+   { id: 'data-structures-1', name: 'تراكيب بيانات 1', credits: 4, prerequisites: ['c-language'], semester: 4 },
   
    { id: 'software-engineering', name: 'هندسة برمجيات', credits: 4, prerequisites: ['systems-analysis'], semester: 4 },
    { id: 'numerical-methods', name: 'طرق عددية', credits: 4, prerequisites: ['math-2','c-language'], semester: 4 },
@@ -34,11 +34,11 @@ const coursesData = [
 
 
     
-    { id: 'operating-systems', name: 'نظم تشغيل', credits: 4, prerequisites: ['software-engineering','data-structures-1'], semester: 2 },
+    { id: 'operating-systems', name: 'نظم تشغيل', credits: 4, prerequisites: ['software-engineering','data-structures-1'], semester: 5 },
     { id: 'delphi', name: 'لغة دلفي', credits: 4, prerequisites: ['database-management'], semester: 3 },
     { id: 'visual-programming-2', name: 'برمجة مرئية 2', credits: 4, prerequisites: ['visual-programming-1' , 'database-management'], semester: 5},
     { id: 'data-structures-2', name: 'تراكيب بيانات 2', credits: 4, prerequisites: ['data-structures-1','cpp-programming'], semester: 5 },
-    { id: 'java-language', name: 'لغة جافا', credits: 4, prerequisites: ['cpp-programming'], semester: 3 },
+    { id: 'java-language', name: 'لغة جافا', credits: 4, prerequisites: ['cpp-programming'], semester: 4 },
     
 
     { id: 'assembly-language', name: 'لغة تجميع ASSEMBLY', credits: 4, prerequisites: ['computer-organization'], semester: 4 },
@@ -288,13 +288,14 @@ function updateSummary() {
     let remainingUnits = 0;
 
     // لو الطالب كمل 40 مادة، اعتبره كمل 140 وحدة
+    /*
     if (completedCount >= 40) {
         completedUnits = 140;
         remainingUnits = 0;
     } else {
         remainingUnits = totalUnits - completedUnits;
     }
-
+*/
     totalCoursesElement.textContent = totalCourses;
     completedCoursesElement.textContent = completedCount;
     remainingCoursesElement.textContent = remainingCoursesCount;
